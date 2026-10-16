@@ -436,8 +436,12 @@ def test_tools_real_paragrafo_antes_de_lista_recusado(tmp_path):
     with pytest.raises(ErroEdicao, match="logo antes de uma lista"):
         on.editar("P9", [{"antigo": "já dá:", "novo": "já dá agora:"}])
     assert not _patches(on)
+    with pytest.raises(ErroEdicao, match="logo antes de uma lista"):
+        on.inserir("P9", "já dá:", "novo parágrafo", posicao="depois")
+    assert not _patches(on)
+    on.inserir("P9", "já dá:", "antes de tudo", posicao="antes")
     on.editar("P9", [{"antigo": "depois", "novo": "no fim"}, {"antigo": "um", "novo": "item um"}])
-    assert len(_patches(on)[0][2]) == 2
+    assert len(_patches(on)) == 2 and len(_patches(on)[1][2]) == 2
 
 
 # ---------- achado 25: data-id de <li>/<p> de célula se perdia ao editar pelo ONMD sem ids ----------

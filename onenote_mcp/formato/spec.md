@@ -104,7 +104,8 @@ blocos que depois recebem acrescentar(onde="#pendencias")
   sobrepõem são recusados.
 - Bloco com algo que o ONMD não mostra (imagem, vídeo ou tabela dentro do texto ou da célula: o `ler_pagina`
   avisa) não aceita `editar` nem `marcar_tarefa`: regravá-lo apagaria isso. Use `inserir` ao lado.
-- Bloco que vem logo antes de uma lista também é recusado: o OneNote o moveria para depois da lista.
+- Bloco (parágrafo, título, tarefa) logo antes de uma lista não se edita nem serve de âncora para `inserir`
+  depois: o OneNote poria o resultado abaixo da lista. Use `posicao=antes` no bloco seguinte à lista.
 - `inserir` põe blocos antes/depois de uma âncora (trecho único ou `#id`). `acrescentar`: `fim`, `inicio`, `#secao`.
 - `marcar_tarefa` marca/desmarca. `renomear_pagina` muda o título. O antes de cada troca fica num diário local.
 

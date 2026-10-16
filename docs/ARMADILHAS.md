@@ -66,8 +66,9 @@ Sintoma → causa. Ler antes de mexer em login, escrita ou lista permitida.
 
 - **Parágrafo regravado aparece depois da lista que vinha logo abaixo dele.** Causa: o OneNote guarda o bloco
   que antecede um `<ul>`/`<ol>` grudado na lista (no GET o id da lista é menor que o do parágrafo); `replace` nele
-  põe o novo depois da lista, mesmo regravando a lista no mesmo PATCH. `editar`/`marcar_tarefa` recusam esse
-  bloco (`onenote._antes_de_lista`). Medido em página real, 15/10 ([provas-v2](provas-v2.md) § Parágrafo grudado).
+  põe o novo depois da lista, mesmo regravando a lista no mesmo PATCH; vale para título, e `insert after` nele
+  também cai depois da lista. `editar`/`marcar_tarefa` recusam esse bloco e `inserir` depois dele também
+  (`onenote._antes_de_lista`). Medido em página real, 15/10 ([provas-v2](provas-v2.md) § Parágrafo grudado).
 
 - **`editar` recusa um bloco "que o ONMD não representa".** Causa: a leitura omitiu algo dentro dele (imagem,
   vídeo, tabela no texto ou na célula; etiqueta fora da lista); regravar o bloco apagaria isso. É de propósito

@@ -308,8 +308,8 @@ regrava só ele (PATCH atômico), e recusa bloco com algo que o ONMD não mostra
 
 - **Lista aninhada** (sub-item) aparece com uma linha em branco antes de cada sub-nível: limite da Microsoft no
   Graph, sem contorno. A escrita avisa; prefira títulos ou lista de um nível.
-- **Parágrafo logo antes de uma lista não se edita:** o OneNote o moveria para depois da lista ao regravá-lo;
-  `editar` recusa e sugere `inserir`.
+- **Parágrafo ou título logo antes de uma lista não se edita:** o OneNote o moveria para depois da lista ao
+  regravá-lo, e o que se insere "depois" dele também cai abaixo da lista; as tools recusam e explicam.
 - **Busca só pelo título** das páginas: o Graph não oferece busca no texto.
 - **Imagem pequena ignora a `largura`** pedida (fica no tamanho natural).
 - **Página nova leva até ~1 min** para existir de fato: ler ou editar logo depois pode dar 404 ou 504. Às vezes a

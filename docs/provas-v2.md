@@ -73,7 +73,9 @@ antes de uma `<ol>` ("já dá:", "ainda não:") foram parar **depois** da lista.
 `ol`/`ul` tem id gerado menor que o do parágrafo anterior (`p {50}` seguido de `ol {48}`): o OneNote guarda o
 parágrafo grudado na lista. Prova isolada numa página nova (`p` + `ol` + `p` + `ol`): `replace` só no parágrafo e
 `replace` no parágrafo **e** na lista no mesmo PATCH dão o mesmo resultado (parágrafo depois da lista).
-Conclusão: `editar` e `marcar_tarefa` recusam bloco seguido de lista.
+Segunda prova (`h2` + `ul`, `p` + `ul`): o título também é grudado (`h2 {50}`, `ul {48}`) e regravado cai depois
+da lista; `insert after` num parágrafo grudado põe o novo **depois da lista**. Conclusão: `editar` e
+`marcar_tarefa` recusam bloco seguido de lista, e `inserir(posicao="depois")` com essa âncora também recusa.
 
 ## Página que não carrega (15/10)
 

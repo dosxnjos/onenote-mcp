@@ -429,6 +429,10 @@ class OneNote:
             if not b.id_gerado:
                 raise ErroEdicao("esse bloco não tem id editável: escolha outro como âncora")
             alvo = b.id_gerado
+            if pos == "after" and _antes_de_lista(b.no):
+                raise ErroEdicao("esse bloco vem logo antes de uma lista, e o OneNote põe o que entra 'depois' dele "
+                                 "abaixo da lista (medido em 15/10/2026): use posicao=antes com o bloco seguinte "
+                                 "à lista, ou a própria lista como âncora")
         html, partes, avisos = self._preparar(conteudo, anexos, lt.data_ids, lt.fonte)
         self.g.patch_conteudo(pagina_id, [{"target": alvo, "action": "insert", "position": pos, "content": html}],
                               partes or None)
@@ -449,9 +453,9 @@ class OneNote:
             if not onmd.strip():
                 raise ErroEdicao("a troca esvaziaria um bloco inteiro: para remover texto, troque por outro texto")
             if _antes_de_lista(b.no):
-                raise ErroEdicao("este bloco vem logo antes de uma lista, e o OneNote o move para depois da lista "
-                                 "quando ele é regravado (medido em 15/10/2026, também regravando a lista junto): "
-                                 "edite outro bloco ou use inserir")
+                raise ErroEdicao("este bloco (parágrafo, título ou tarefa) vem logo antes de uma lista, e o OneNote "
+                                 "o move para depois da lista quando ele é regravado (medido em 15/10/2026, também "
+                                 "regravando a lista junto): deixe-o como está e edite outro bloco")
             livres = {i for i in _ids_do_no(b.no) if not i.startswith("on-")}   # os ids do próprio bloco voltam
             html, partes, av = self._preparar(onmd, None, lt.data_ids - livres, lt.fonte, permitir_anexos=False,
                                               id_original=b.data_id, texto_lido=lido)
