@@ -1,0 +1,33 @@
+[project]
+name = "onenote-mcp"
+version = "0.1.0"
+description = "Servidor MCP do OneNote (conta pessoal Microsoft): lê, cria e edita páginas pelo Microsoft Graph, só nas seções de uma lista permitida e sem nenhuma função de apagar"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Gabriel dos Anjos" }]
+requires-python = ">=3.12"
+keywords = ["mcp", "onenote", "microsoft-graph", "claude"]
+dependencies = [
+  "mcp==1.30.0",
+  "msal==1.34.0",
+  "msal-extensions==1.3.1",
+]
+
+[project.optional-dependencies]
+teste = ["pytest==8.4.2"]
+
+[project.urls]
+Homepage = "https://github.com/dosxnjos/onenote-mcp"
+Repository = "https://github.com/dosxnjos/onenote-mcp"
+
+[build-system]
+# license = "MIT" (texto SPDX, PEP 639) pede setuptools 77 ou mais novo
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["onenote_mcp", "onenote_mcp.formato"]
+
+[tool.setuptools.package-data]
+"onenote_mcp.formato" = ["spec.md"]

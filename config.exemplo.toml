@@ -1,0 +1,41 @@
+# copiar para config.toml (fora do git) e preencher
+# opcional: pasta do cache do token e do diário. TEM que ficar aqui, antes de [microsoft] (depois, é ignorada).
+# Padrão: %LOCALAPPDATA%\onenote-mcp no Windows, ~/onenote-mcp no macOS/Linux
+# cache_dir = "C:/Users/voce/onenote-cache"
+
+[microsoft]
+# "ID do aplicativo (cliente)" do app registrado no Entra (README, passo 1). Não é segredo: o app é cliente público.
+client_id = ""
+# conta pessoal: consumers. Nunca "common" (derruba a renovação do token, ARMADILHAS)
+authority = "https://login.microsoftonline.com/consumers"
+# opcional: e-mail da conta, se o cache tiver mais de uma (o login normal guarda uma só)
+# conta = ""
+
+[lista]
+# prefixos "Bloco/Grupo/Seção" que o Claude pode ler e escrever. Vazio = nada.
+# Para ver os nomes: python -m onenote_mcp eu (blocos) e python -m onenote_mcp secoes (seções liberadas)
+permitidos = [
+  "Meu Bloco/Grupo/Seção",
+]
+# termos sempre fora: vale QUALQUER TRECHO do nome do bloco, grupo ou seção ("senha" derruba "Resenhas" também).
+# "senha", "password" e "credencia" já vêm bloqueados no código (o toml soma termos, não remove)
+bloqueados = []
+# bloco compartilhado por OUTRA conta não aparece na lista da Microsoft: entra pelo id ("0-<cid>!s<guid>")
+# ou pelo link do OneDrive que tem resid=<cid>!s<guid> (README, passo 3)
+# blocos_extra = ["0-XXXXXXXXXXXXXXXX!sxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"]
+
+[arquivos]
+# pastas de onde imagens e anexos podem sair (parâmetro `anexos` das tools). Vazio = desligado.
+# Use uma pasta DEDICADA (ex.: C:\Users\voce\OneNote-anexos); a home inteira e a raiz do disco são ignoradas.
+pastas = []
+# teto por pedido (a Microsoft corta em 4 MB; 3.5 é a margem e o máximo aceito aqui)
+max_mb = 3.5
+
+# [servidor]
+# texto ACRESCENTADO ao fim das instruções que o servidor entrega ao Claude (a base fica em server.py:
+# lista permitida, formato ONMD, escrever para o leitor). Vale ao reiniciar o servidor.
+# Texto entre aspas triplas, não lista. Descomente a linha [servidor] também (nunca `servidor = "..."`).
+# instrucoes = """
+# Quem lê estas páginas: a equipe de vendas; explique toda sigla.
+# Tom: direto, frases curtas, sem jargão.
+# """

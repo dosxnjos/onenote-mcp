@@ -1,0 +1,72 @@
+# Vitrine ONMD {id=topo cor=azul}
+
+Parágrafo com **negrito**, *itálico*, ~~riscado~~, <u>sublinhado</u>, ==realce==, `código`, x<sup>2</sup>, <span cor=vermelho tamanho=14>vermelho grande</span> e [link](https://example.com).
+
+**negrito *com itálico***
+
+Parágrafo azul centralizado {id=resumo-p cor=azul alinhar=centro}
+
+Texto com etiquetas {tags=important,idea}
+
+---
+
+> primeira linha da citação
+> segunda linha com **negrito**
+
+```py
+def f():
+    return 1
+```
+
+- [ ] tarefa aberta
+- [x] tarefa feita {tags=important}
+- [ ] ligar para o fornecedor {tags=schedule-meeting}
+
+- pai {marcador=quadrado}
+  - filho
+    - neto
+- pai B {cor=verde}
+
+1. um
+2. dois
+
+a. alfa
+b. beta
+
+| Item | Preço |
+| --- | --: |
+| Camiseta | R$ 99 |
+| Boné | R$ 49 |
+
+<destaque cor=azul icone="💡">
+**Atenção:** destaque com texto
+</destaque>
+
+<colunas>
+<coluna largura=40%>
+esquerda
+</coluna>
+<coluna largura=60%>
+- item na direita
+- outro
+</coluna>
+</colunas>
+
+<tabela largura=80% id=precos>
+<linha fundo=azul>
+<celula largura=30%>**Item**</celula>
+<celula>**Preço**</celula>
+</linha>
+<linha>
+<celula>Camiseta</celula>
+<celula alinhar=direita>R$ 99</celula>
+</linha>
+</tabela>
+
+<secao id=resumo>
+Dentro da seção nomeada.
+
+## Subtítulo {cor=vermelho}
+</secao>
+
+Texto com \*asteriscos\*, \<tag> e \{chaves} literais.
